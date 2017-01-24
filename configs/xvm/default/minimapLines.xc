@@ -11,7 +11,7 @@
      // "enabled": true - включен; "color" - цвет.
      // Own vehicle direction definition.
      // Шаблон направления корпуса своей техники.
-    "vehicle": { "enabled": false, "inmeters": true, "color": "0x60FF00" },
+    "vehicle": { "enabled": true, "inmeters": true, "color": "0x60FF00" },
      // Camera direction definition.
      // Шаблон направления камеры от своей техники.
     "camera": { "enabled": true, "inmeters": true, "color": "0xFFCC66" },

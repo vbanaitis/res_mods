@@ -5,14 +5,16 @@
  */
 {
   "sounds": {
-    "enabled": false,
-    // List of extra banks to load from folder res_mods/X.Y.Z/audioww.
-    // Use semicolon for multiple values: "bank1.bnk; bank2.bnk;..."
-    // Список дополнительных банков для загрузки из папки res_mods/X.Y.Z/audioww.
-    // Несколько банков необходимо указывать через точку с запятой: "bank1.bnk; bank2.bnk;..."
+    "enabled": true,
+    // List of extra banks to load
+    // Use comma for multiple values: ["bank1.bnk", "bank2.bnk"]. Path is relative to ./res_mods/x.x.x/audioww/
+    // You can use xvm:// (path relative to /res_mods/mods/shared_resources/xvm/ ) and cfg:// (path relative to /res_mods/configs/xvm/ )
+    // Список дополнительных банков для загрузки
+    // Несколько банков необходимо указывать через запятую: ["bank1.bnk", "bank2.bnk"]. Путь относителен к ./res_mods/x.x.x/audioww/
+    // Разрешено использование xvm:// (путь относительно /res_mods/mods/shared_resources/xvm/ ) и cfg:// (относительно /res_mods/configs/xvm/ )
     "soundBanks": {
-      "hangar": "xvm.bnk",
-      "battle": "xvm.bnk"
+      "battle": ["xvm://audioww/xvm.bnk"],
+      "hangar": ["xvm://audioww/xvm.bnk"]
     },
     // Enable sound events logging in the xvm.log
     // Включить логгирование звуковых событий в xvm.log
@@ -27,9 +29,11 @@
       // Для отключения звукового события используйте пустую строку для значения
       //"originalEventName": ""
       //
-      // Disable original sixth sense light bulb sound event
-      // Отключить оригинальный звук лампы шестого чувства
+      // Disable original sixth sense light bulb sound event (Variant 1, Variant 2, User sound)
+      // Отключить оригинальный звук лампы шестого чувства (Вариант 1, Вариант 2, Пользовательский)
       "lightbulb": "",
+      "lightbulb_02": "",
+      "sixthSense": "",
       //
       // Disable original enemy detection event      
       // Отключить оригинальный звук обнаружения противника
@@ -53,7 +57,7 @@
       //
       // Sixth sense perk
       // Перк Шестое чувство
-      "xvm_sixthSense": "",
+      "xvm_sixthSense": "xvm_sixthSense",
       // Sixth sense perk for Т-34-85 Rudy
       // Перк Шестое чувство для Т-34-85 Rudy
       "xvm_sixthSenseRudy": "xvm_sixthSenseRudy",
@@ -63,12 +67,12 @@
       //"xvm_enemySighted": "xvm_enemySighted",      
       // Fire alert (Use in together with disable original event)
       // Пожар (Используйте вместе с отключением оригинального звука)
-      "xvm_fireAlert": "",
-      //"xvm_fireAlert": "xvm_fireAlert",
+      //"xvm_fireAlert": "",
+      "xvm_fireAlert": "xvm_fireAlert",
       // Damage ammoBay (Use in together with disable original event)
       // Повреждение боеукладки (Используйте вместе с отключением оригинального звука)
-      "xvm_ammoBay": "",
-      //"xvm_ammoBay": "xvm_ammoBay",
+      //"xvm_ammoBay": "",
+      "xvm_ammoBay": "xvm_ammoBay",
       // Notifications informing about the imminent end of the battle (Use in together with disable original event)
       // Оповещения сообщающие о скором завершении боя (Используйте вместе с отключением оригинального звука)
       "xvm_battleEnd_5_min": "",

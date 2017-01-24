@@ -16,12 +16,17 @@ def math_mul(*a):
 # Division. Деление.
 @xvm.export('math.div')
 def math_div(a, b):
-    return a / b
+    return a / float(b)
 
 # Raise to power. Возведение в степень.
 @xvm.export('math.pow')
 def math_pow(a, n):
     return a ** n
+
+#  Absolute value. Абсолютная величина
+@xvm.export('math.abs')
+def math_abs(a):
+    return abs(a)
 
 # Random numbers
 
