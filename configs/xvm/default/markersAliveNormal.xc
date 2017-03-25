@@ -417,7 +417,7 @@
     // Vehicle tier.
     // Уровень танка.
     "levelIcon": {
-      "enabled": false,
+      "enabled": true,
       "x": 0,
       "y": -21,
       "alpha": 100
