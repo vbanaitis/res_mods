@@ -133,7 +133,7 @@ class _XfwComponent(BaseDAAPIComponent):
             else:
                 return None
 
-            mods_dir = PATH.XFW_MODS_DIR
+            mods_dir = PATH.XFW_MODS_DIR+'/packages'
             if not os.path.isdir(mods_dir):
                 return None
 

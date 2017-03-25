@@ -7,7 +7,7 @@ import imp
 import traceback
 
 from xfw.events import overrideMethod
-from xfw.constants import PATH
+from xfw.constants import FLAGS, PATH
 from xfw.utils import resolve_path
 
 from Avatar import PlayerAvatar
@@ -32,7 +32,12 @@ class XFWWWise(object):
         """
         #print('XFW_WWISE/__init__')
 
-        self.native = imp.load_dynamic('XFW_WWISE', './res_mods/mods/xfw/native/xfw_wwise.pyd')
+        self.native = None
+        if FLAGS.XFW_IN_PACKAGE:
+            import xfw.vfs as vfs
+            self.native = vfs.c_extension_load('XFW_WWISE', 'mods/xfw/native/xfw_wwise.pyd')
+        else:
+            self.native = imp.load_dynamic('XFW_WWISE', '%s/xfw/native/xfw_wwise.pyd' % PATH.XFW_MODS_DIR)
 
         self.battle_config = set()
         self.hangar_config = set()
@@ -155,7 +160,7 @@ class XFWWWise(object):
         #print('XFW_WWISE/_bank_load: bankPath=%s' % bank_path)
 
         try:
-            bank_id = self.native.bank_load_path(unicode(bank_path),unicode(PATH.GENERAL_MODS_DIR + '/audioww/'))
+            bank_id = self.native.bank_load_path(unicode(bank_path),unicode(PATH.WOT_RESMODS_DIR + '/audioww/'))
             if bank_id:
                 self.banks_loaded[bank_path] = bank_id
         except Exception:
@@ -186,7 +191,7 @@ class XFWWWise(object):
         xvm://* -> /res_mods/mods/shared_resources/xvm/*
         *       -> /res_mods/x.x.x/audioww/*
         """
-        return resolve_path(path, PATH.GENERAL_MODS_DIR + '/audioww/').lower()
+        return resolve_path(path, PATH.WOT_RESMODS_DIR + '/audioww/').lower()
 
 g_wwise = XFWWWise()
 
